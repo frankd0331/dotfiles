@@ -1,4 +1,7 @@
-vimrc
+dotfiles
 =====
 
-just a personal vimrc
+Just some personal dotfiles of mine.
+
+Right Now:
+_gvimrc
