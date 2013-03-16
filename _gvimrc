@@ -37,3 +37,15 @@ inoremap <C-S> <C-O>:update<CR>
 " https://github.com/tpope/vim-pathogen 
 execute pathogen#infect()
 filetype plugin indent on
+
+" Some Behaviour changes
+set tabstop=4
+set autoindent
+set copyindent	
+set shiftwidth=4
+set showmatch	" shows matching parens
+set smarttab
+set hlsearch
+set incsearch	" shows search matches as you type
+set nobackup
+set noswapfile
