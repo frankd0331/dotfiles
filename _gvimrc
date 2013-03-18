@@ -4,7 +4,11 @@
 set autochdir
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-runtime ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
+" it looks like the above is good enough for both windows and linux
+" i thought the below would be needed for linux but it doesn't seem to matter
+" i'm thinking because where-ever bundle is, it is already apart of the
+" runtime
+" runtime ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
 
 " Pathogen -- ok I don't think I'm gonna use this now
 " still here as a reminder though
@@ -27,6 +31,7 @@ set background=dark
 " set color scheme to solarized
 let g:solarized_italic=0
 colorscheme solarized
+call togglebg#map("")
 
 " Setting the default window size
 set lines=50 columns=100
