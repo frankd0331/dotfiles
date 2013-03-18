@@ -4,6 +4,7 @@
 set autochdir
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
+runtime ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
 
 " Pathogen -- ok I don't think I'm gonna use this now
 " still here as a reminder though
@@ -31,7 +32,12 @@ colorscheme solarized
 set lines=50 columns=100
 
 " Ubuntu_Mono set to 14
-set guifont=Ubuntu_Mono\ 14
+" trying to check os first
+if has('win64')
+	set guifont=Ubuntu_Mono\ 14
+elseif has('unix')
+	set guifont=Ubuntu_Mono\ 11
+endif
 
 " Use CTRL-s for saving, also in Insert mode
 " I think use in terminal will require more effort
