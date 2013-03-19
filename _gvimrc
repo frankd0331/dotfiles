@@ -69,3 +69,4 @@ set hlsearch
 set incsearch	" shows search matches as you type
 set nobackup
 set noswapfile
+set guioptions-=T	" remove toolbar
