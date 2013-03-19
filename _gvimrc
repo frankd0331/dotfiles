@@ -1,6 +1,8 @@
 " Ok this vimrc file is almost more of a journal while I'm learning Vim
 
+" This sets a new blank editor to $HOME or
 " This sets :pwd to current file's directory
+cd $HOME
 set autochdir
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
