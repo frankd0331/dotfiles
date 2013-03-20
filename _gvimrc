@@ -1,4 +1,5 @@
 " Ok this vimrc file is almost more of a journal while I'm learning Vim
+set nocompatible
 
 " This sets a new blank editor to $HOME or
 " This sets :pwd to current file's directory
@@ -65,8 +66,15 @@ set copyindent
 set shiftwidth=4
 set showmatch	" shows matching parens
 set smarttab
+set ignorecase
 set hlsearch
 set incsearch	" shows search matches as you type
 set nobackup
 set noswapfile
 set guioptions-=T	" remove toolbar
+set foldmethod=syntax
+set fileencoding=utf-8
+set encoding=utf-8
+set backspace=indent,eol,start
+set visualbell
+set cursorline
