@@ -1,6 +1,6 @@
 #README.md
 ##This is just a repository of my personal dotfiles.
-disclaimer: this is just me tweaking some files and trying to learn vim and git
+disclaimer: this is just me tweaking some files and learning vim and git
 
 ##Naming convention for some files
 config.appName
