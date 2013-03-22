@@ -2,10 +2,10 @@
 set nocompatible
 
 " Current Plugins
-" pathogen
-" solarized
-" tComment
-" easy motion
+" pathogen 				git://github.com/tpope/vim-pathogen.git
+" solarized				git://github.com/altercation/vim-colors-solarized.git
+" tComment				git://github.com/vim-scripts/tComment.git
+" easy motion			git://github.com/Lokaltog/vim-easymotion.git
 "
 " Considerd Plugins
 " snipmate
