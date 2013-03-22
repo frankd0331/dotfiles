@@ -6,6 +6,7 @@ set nocompatible
 " solarized				git://github.com/altercation/vim-colors-solarized.git
 " tComment				git://github.com/vim-scripts/tComment.git
 " easy motion			git://github.com/Lokaltog/vim-easymotion.git
+" nerdtree				git://github.com/scrooloose/nerdtree.git
 "
 " Considerd Plugins
 " snipmate
