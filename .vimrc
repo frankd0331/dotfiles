@@ -4,9 +4,10 @@ set nocompatible
 " Current Plugins
 " pathogen
 " solarized
+" tComment
+" easy motion
 "
 " Considerd Plugins
-" easy motion
 " snipmate
 
 " This sets a new blank editor to $HOME or
