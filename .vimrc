@@ -7,6 +7,7 @@ set nocompatible
 " tComment				git://github.com/vim-scripts/tComment.git
 " easy motion			git://github.com/Lokaltog/vim-easymotion.git
 " nerdtree				git://github.com/scrooloose/nerdtree.git
+" vim-scala				git://github.com/derekwyatt/vim-scala.git
 "
 " Considerd Plugins
 " snipmate
