@@ -3,11 +3,14 @@ set nocompatible
 
 " Current Plugins
 " pathogen 				git://github.com/tpope/vim-pathogen.git
-" solarized				git://github.com/altercation/vim-colors-solarized.git
 " tComment				git://github.com/vim-scripts/tComment.git
 " easy motion			git://github.com/Lokaltog/vim-easymotion.git
 " nerdtree				git://github.com/scrooloose/nerdtree.git
 " vim-scala				git://github.com/derekwyatt/vim-scala.git
+" 
+" Color Schemes
+" molokai				git://github.com/tomasr/molokai.git
+" solarized				git://github.com/altercation/vim-colors-solarized.git
 "
 " Considerd Plugins
 " snipmate
@@ -31,38 +34,39 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect('bundle/{}')
 filetype plugin indent on
 
-
 " This shows numbers of lines
 set number
 
 " I think syntax on is default already, but I want it regardless of system
-syntax enable
+syntax on
 
-" Here I'm trying out solarize for Vim because it looks more mature than monokai
-" https://github.com/altercation/vim-colors-solarized
-set background=dark
-" Apparently I need to set the g:solarized_italic variable to 0 before I
-" set color scheme to solarized
-let g:solarized_italic=0
-colorscheme solarized
-call togglebg#map("")
-
-
-" Ubuntu_Mono set to 14
+" Ubuntu_Mono set to 15
 " trying to check os first
 if has("gui_running")
 	" Setting the default window size
 	set lines=50 columns=100
+
 	if has("gui_win32")
 		set guifont=Ubuntu_Mono:h12:cANSI
 		nmap _t :!cmd<CR>
 	elseif has("gui_gtk2")
-		set guifont=Ubuntu\ Mono\ 12
+		set guifont=Ubuntu\ Mono\ 15
 	endif
 endif
 
+" Solarized
+set background=dark
+let g:solarized_italic=0
+colorscheme solarized
+call togglebg#map("")
+
+" Molokai
+" colorscheme molokai
+" let g:molokai_original = 1
+
 " Use CTRL-s for saving, also in Insert mode
-" I think use in terminal will require more effort
+" put this in .bashrc to disable <Ctrl-s>
+" stty -ixon
 " http://vim.wikia.com/wiki/Map_Ctrl-S_to_save_current_or_new_files
 noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>
@@ -106,6 +110,5 @@ set listchars=tab:»·,trail:·,eol:¬
 " Word wrap without line breaks
 set wrap
 set linebreak
-set nolist	" list disables linebreak
 set textwidth=0
 set wrapmargin=0
