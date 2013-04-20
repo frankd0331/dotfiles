@@ -7,13 +7,15 @@ set nocompatible
 " easy motion			git://github.com/Lokaltog/vim-easymotion.git
 " nerdtree				git://github.com/scrooloose/nerdtree.git
 " vim-scala				git://github.com/derekwyatt/vim-scala.git
-" 
+" insertlessly			git://github.com/dahu/Insertlessly.git
+"
 " Color Schemes
 " molokai				git://github.com/tomasr/molokai.git
 " solarized				git://github.com/altercation/vim-colors-solarized.git
 "
 " Considerd Plugins
 " snipmate
+" vim-slime				git://github.com/jpalardy/vim-slime.git
 
 " This sets a new blank editor to $HOME or
 " This sets :pwd to current file's directory
@@ -30,7 +32,7 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 " Pathogen -- ok I don't think I'm gonna use this now
 " still here as a reminder though
 " nevermind gonna use it
-" https://github.com/tpope/vim-pathogen 
+" https://github.com/tpope/vim-pathogen
 execute pathogen#infect('bundle/{}')
 filetype plugin indent on
 
@@ -64,6 +66,7 @@ call togglebg#map("")
 " colorscheme molokai
 " let g:molokai_original = 1
 
+
 " Use CTRL-s for saving, also in Insert mode
 " put this in .bashrc to disable <Ctrl-s>
 " stty -ixon
@@ -78,7 +81,7 @@ inoremap <C-S> <C-O>:update<CR>
 " Some Behaviour changes
 set tabstop=4
 set autoindent
-set copyindent	
+set copyindent
 set shiftwidth=4
 
 set showmatch	" shows matching parens
@@ -104,7 +107,7 @@ set visualbell
 
 set cursorline
 
-set nolist 
+set nolist
 set listchars=tab:»·,trail:·,eol:¬
 
 " Word wrap without line breaks
@@ -112,3 +115,5 @@ set wrap
 set linebreak
 set textwidth=0
 set wrapmargin=0
+
+set pastetoggle=<F9>
