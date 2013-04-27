@@ -5,6 +5,29 @@
       "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+;; stop making backup files
+(setq make-backup-files nil)
+
+;; scala mode 2
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
+(unless (package-installed-p 'scala-mode2)
+  (package-refresh-contents) (package-install 'scala-mode2))
+
+(require 'scala-mode2)
+
+;; ensime setup
+;; load the ensime lisp code...
+(add-to-list 'load-path "/home/frankd/bin/ensime_2.10.0-0.9.8.9/elisp/")
+(require 'ensime)
+
+;; This step causes the ensime-mode to be started whenever
+;; scala-mode is started for a buffer. You may have to customize this step
+;; if you're not using the standard scala mode.
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
 ;; this starts up evil mode
 (require 'evil)
 (evil-mode 1)

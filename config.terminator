@@ -23,7 +23,7 @@
     cursor_color = "#ffffff"
     foreground_color = "#eee8d5"
     cursor_shape = ibeam
-    font = Ubuntu Mono 16
+    font = Ubuntu Mono 14
     background_color = "#002b36"
     scrollback_infinite = True
   [[solarized-light]]
