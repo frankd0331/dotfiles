@@ -8,3 +8,4 @@ config.appName
 ##Included so far:
 *	.vimrc I'm really new to vim so please don't use this for info
 *	terminator config to make it look solarized (basically https://github.com/ghuntley/terminator-solarized)
+*	.emacs added
