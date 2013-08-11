@@ -32,6 +32,8 @@
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 ;; this starts up evil mode
+(unless (package-installed-p 'evil)
+	(package-refresh-contents) (package-install 'evil))
 (require 'evil)
 (evil-mode 1)
 ;; don't change cursor
@@ -43,6 +45,57 @@
 ;; trying to rebind esc to go into normal mode
 (global-set-key (kbd "<escape>") 'evil-normal-state)
 
+;; trying to get zenburn here
+(unless (package-installed-p 'zenburn-theme)
+	(package-refresh-contents) (package-install 'zenburn-theme))
+(load-theme 'zenburn t)
+
+;; trying to get auto-complete
+(unless (package-installed-p 'auto-complete)
+	(package-refresh-contents) (package-install 'autocomplete))
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
+(require 'auto-complete-config)
+(ac-config-default)
+(define-key ac-completing-map "\C-m" nil)
+(setq ac-use-menu-map t)
+(define-key ac-menu-map "\C-m" nil)
+
+;; trying yasnippet
+(unless (package-installed-p 'yasnippet)
+	(package-refresh-contents) (package-install 'yasnippet))
+(require 'yasnippet) ;; not yasnippet-bundle
+(yas-global-mode 1)
+
+;; js2-mode
+(unless (package-installed-p 'js2-mode)
+	(package-refresh-contents) (package-install 'js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+;; js-comint
+(unless (package-installed-p 'js-comint)
+	(package-refresh-contents) (package-install 'js-comint))
+(require 'js-comint)
+;; Use node as our repl
+(setq inferior-js-program-command "node --interactive")
+(setq inferior-js-mode-hook
+      (lambda ()
+        ;; We like nice colors
+        (ansi-color-for-comint-mode-on)
+        ;; Deal with some prompt nonsense
+        (add-to-list
+         'comint-preoutput-filter-functions
+         (lambda (output)
+           (replace-regexp-in-string "\033\\[[0-9]+[GK]" "" output))))) 
+(setenv "NODE_NO_READLINE" "1")
+(add-hook 'js2-mode-hook '(lambda () 
+	  (local-set-key "\C-x\C-e" 'js-send-last-sexp)
+	  (local-set-key "\C-\M-x" 'js-send-last-sexp-and-go)
+	  (local-set-key "\C-cb" 'js-send-buffer)
+	  (local-set-key "\C-c\C-b" 'js-send-buffer-and-go)
+	  (local-set-key "\C-cl" 'js-load-file-and-go)))
+
+
+	     
 ;; using f11 for fullscreen
 (defun toggle-fullscreen ()
   "Toggle full screen on X11"
@@ -76,32 +129,12 @@
 (setq column-number-mode t)
 (line-number-mode t)
 (column-number-mode t)
-(global-linum-mode 1)
+;;(global-linum-mode 1)
+(add-hook 'window-configuration-change-hook
+          (lambda ()
+            (set-window-margins (car (get-buffer-window-list (current-buffer) nil t)) 1 1)))
+(setq-default line-spacing 0.5)
 
 ;; make all "yes or no" prompts show "y or n" instead
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; trying to get a JS repl going
-;; this is to get js2-mode going
-(autoload 'js2-mode "js2-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-;; this is something for slime-js
-(global-set-key [f5] 'slime-js-reload)
-(add-hook 'js2-mode-hook
-          (lambda ()
-            (slime-js-minor-mode 1)))
-
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (zenburn)))
- '(custom-safe-themes (quote ("fc6e906a0e6ead5747ab2e7c5838166f7350b958d82e410257aeeb2820e8a07a" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
