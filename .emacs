@@ -87,12 +87,19 @@
          (lambda (output)
            (replace-regexp-in-string "\033\\[[0-9]+[GK]" "" output))))) 
 (setenv "NODE_NO_READLINE" "1")
-(add-hook 'js2-mode-hook '(lambda () 
+
+;; I'm having trouble with this part, maybe it should be put in some other file
+(setq js2-mode-hook (lambda () 
 	  (local-set-key "\C-x\C-e" 'js-send-last-sexp)
 	  (local-set-key "\C-\M-x" 'js-send-last-sexp-and-go)
 	  (local-set-key "\C-cb" 'js-send-buffer)
 	  (local-set-key "\C-c\C-b" 'js-send-buffer-and-go)
-	  (local-set-key "\C-cl" 'js-load-file-and-go)))
+	  (local-set-key "\C-cl" 'js-load-file-and-go)
+	  (local-set-key "\C-c\C-j" 'js-send-line)
+	  (local-set-key "\C-c\C-r" 'js-send-region)
+	  (local-set-key "\C-c!" 'run-js)
+	  (local-set-key (kbd "<return>") 'newline-and-indent)
+	  ))
 
 
 	     
