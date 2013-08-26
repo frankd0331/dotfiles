@@ -115,3 +115,15 @@
 (require 'jade-mode)    
 (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
+
+(defvar my-packages '(clojure-mode
+                      clojure-test-mode
+                      nrepl))
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+
+(require 'nrepl)
+(require 'clojure-mode)
+(require 'clojure-test-mode)
