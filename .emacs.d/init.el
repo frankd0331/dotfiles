@@ -17,7 +17,7 @@
 (require 'evil)
 (evil-mode 1)
 ;; don't change cursor
-(setq evil-default-cursor t)
+;(setq evil-default-cursor t)
 ;; make insert mode emacs mode
 (setcdr evil-insert-state-map nil)
 (define-key evil-insert-state-map
@@ -71,8 +71,12 @@
   (message ""))
 
 ;; Show matching parens (mixed style)
-(show-paren-mode t)
+(show-paren-mode 1)
 (setq show-paren-delay 0.0)
+(require 'paren)
+(set-face-background 'show-paren-match-face (face-background 'default))
+(set-face-foreground 'show-paren-match-face "#FF0000")
+(set-face-attribute 'show-paren-match-face nil :weight 'ultra-bold)
 
 ;; Display the line and column number in the modeline
 (setq line-number-mode t)
@@ -116,6 +120,7 @@
 (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
+;; some clojure stuff
 (defvar my-packages '(clojure-mode
                       clojure-test-mode
                       nrepl))
@@ -127,3 +132,37 @@
 (require 'nrepl)
 (require 'clojure-mode)
 (require 'clojure-test-mode)
+
+(require 'rainbow-delimiters)
+(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+
+;; multiple cursors
+(unless (package-installed-p 'multiple-cursors)
+	(package-refresh-contents) (package-install 'multiple-cursors))
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+;; paredit
+(unless (package-installed-p 'paredit)
+  (package-refresh-contents) (package-install 'paredit))
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+(add-hook 'clojure-mode-hook          #'enable-paredit-mode)
+
+;; highlight-parentheses
+(unless (package-installed-p 'highlight-parentheses)
+  (package-refresh-contents) (package-install 'highlight-parentheses))
+(require 'highlight-parentheses)
+(define-globalized-minor-mode global-highlight-parentheses-mode
+  highlight-parentheses-mode
+  (lambda ()
+    (highlight-parentheses-mode t)))
+(global-highlight-parentheses-mode t)
