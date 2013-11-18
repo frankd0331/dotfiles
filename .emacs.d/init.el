@@ -1,8 +1,7 @@
 ;; this includes the marmalade package repo
 (require 'package)
 (add-to-list 'package-archives 
-    '("marmalade" .
-      "http://marmalade-repo.org/packages/"))
+    '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
 ;; stop making backup files
@@ -133,7 +132,9 @@
 (require 'clojure-mode)
 (require 'clojure-test-mode)
 
-(require 'rainbow-delimiters)
+;; I'm not sure where rainbow-delimiters are
+;; if you miss it find it and install it
+;;(require 'rainbow-delimiters)
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 
 ;; multiple cursors
@@ -166,3 +167,8 @@
   (lambda ()
     (highlight-parentheses-mode t)))
 (global-highlight-parentheses-mode t)
+
+;; scala-mode2
+(unless (package-installed-p 'scala-mode2)
+  (package-refresh-contents) (package-install 'scala-mode2))
+(require 'scala-mode2)
