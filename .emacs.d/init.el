@@ -172,3 +172,8 @@
 (unless (package-installed-p 'scala-mode2)
   (package-refresh-contents) (package-install 'scala-mode2))
 (require 'scala-mode2)
+
+;; sml-mode
+(unless (package-installed-p 'sml-mode)
+  (package-refresh-contents) (package-install 'sml-mode))
+(require 'sml-mode)
