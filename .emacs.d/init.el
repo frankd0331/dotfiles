@@ -174,6 +174,17 @@
 (require 'scala-mode2)
 
 ;; sml-mode
+;; having some snafu c indent
 (unless (package-installed-p 'sml-mode)
   (package-refresh-contents) (package-install 'sml-mode))
 (require 'sml-mode)
+;; enable electric-indent-mode
+;; not sure if i'll want to use this all the time
+;; but hopefully it'll solve my SML indent issues
+(electric-indent-mode 1)
+
+;; haskell-mode
+(unless (package-installed-p 'haskell-mode)
+  (package-refresh-contents) (package-install 'haskell-mode))
+(require 'haskell-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
