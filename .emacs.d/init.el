@@ -188,3 +188,8 @@
   (package-refresh-contents) (package-install 'haskell-mode))
 (require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+
+;; go-mode
+(unless (package-installed-p 'go-mode)
+  (package-refresh-contents) (package-install 'go-mode))
+(require 'go-mode-load)
