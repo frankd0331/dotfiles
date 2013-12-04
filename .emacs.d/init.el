@@ -187,9 +187,17 @@
 (unless (package-installed-p 'haskell-mode)
   (package-refresh-contents) (package-install 'haskell-mode))
 (require 'haskell-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;; trying to figure out my prefered indentation
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 
-;; go-mode
-(unless (package-installed-p 'go-mode)
-  (package-refresh-contents) (package-install 'go-mode))
-(require 'go-mode-load)
+;; erlang
+(unless (package-installed-p 'erlang)
+  (package-refresh-contents) (package-install 'erlang))
+(require 'erlang-start)
+
+;; elixir-mode
+(unless (package-installed-p 'elixir-mode)
+  (package-refresh-contents) (package-install 'elixir-mode))
+(require 'elixir-mode)
