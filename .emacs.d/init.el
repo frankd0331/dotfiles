@@ -119,24 +119,6 @@
 (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
-;; some clojure stuff
-(defvar my-packages '(clojure-mode
-                      clojure-test-mode
-                      nrepl))
-
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
-
-(require 'nrepl)
-(require 'clojure-mode)
-(require 'clojure-test-mode)
-
-;; I'm not sure where rainbow-delimiters are
-;; if you miss it find it and install it
-;;(require 'rainbow-delimiters)
-(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-
 ;; multiple cursors
 (unless (package-installed-p 'multiple-cursors)
 	(package-refresh-contents) (package-install 'multiple-cursors))
@@ -156,7 +138,6 @@
 (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
-(add-hook 'clojure-mode-hook          #'enable-paredit-mode)
 
 ;; highlight-parentheses
 (unless (package-installed-p 'highlight-parentheses)
@@ -167,21 +148,6 @@
   (lambda ()
     (highlight-parentheses-mode t)))
 (global-highlight-parentheses-mode t)
-
-;; scala-mode2
-(unless (package-installed-p 'scala-mode2)
-  (package-refresh-contents) (package-install 'scala-mode2))
-(require 'scala-mode2)
-
-;; sml-mode
-;; having some snafu c indent
-(unless (package-installed-p 'sml-mode)
-  (package-refresh-contents) (package-install 'sml-mode))
-(require 'sml-mode)
-;; enable electric-indent-mode
-;; not sure if i'll want to use this all the time
-;; but hopefully it'll solve my SML indent issues
-(electric-indent-mode 1)
 
 ;; haskell-mode
 (unless (package-installed-p 'haskell-mode)
