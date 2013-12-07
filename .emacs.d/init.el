@@ -1,8 +1,19 @@
-;; this includes the marmalade package repo
+;; this includes the melpa package repo
 (require 'package)
 (add-to-list 'package-archives 
     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
+
+;; packages
+(defvar my-packages '(clojure-mode
+		      clojure-test-mode
+		      evil
+		      zenburn-theme
+		      ));;cider
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
 
 ;; stop making backup files
 (setq make-backup-files nil)
@@ -11,9 +22,6 @@
 (setq auto-save-default nil)
 
 ;; this starts up evil mode
-(unless (package-installed-p 'evil)
-	(package-refresh-contents) (package-install 'evil))
-(require 'evil)
 (evil-mode 1)
 ;; don't change cursor
 ;(setq evil-default-cursor t)
@@ -24,9 +32,7 @@
 ;; trying to rebind esc to go into normal mode
 (global-set-key (kbd "<escape>") 'evil-normal-state)
 
-;; trying to get zenburn here
-(unless (package-installed-p 'zenburn-theme)
-	(package-refresh-contents) (package-install 'zenburn-theme))
+;; zenburn
 (load-theme 'zenburn t)
 
 ;; trying to get auto-complete
@@ -158,12 +164,5 @@
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 
-;; erlang
-(unless (package-installed-p 'erlang)
-  (package-refresh-contents) (package-install 'erlang))
-(require 'erlang-start)
-
-;; elixir-mode
-(unless (package-installed-p 'elixir-mode)
-  (package-refresh-contents) (package-install 'elixir-mode))
-(require 'elixir-mode)
+;; to-do refactor all of these separate packages into a my-packages list
+;; add:  cider
