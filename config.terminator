@@ -22,7 +22,7 @@
     use_system_font = False
     foreground_color = "#dcdccc"
     cursor_shape = ibeam
-    font = Ubuntu Mono 14
+    font = Ubuntu Mono 16
     background_color = "#3f3f3f"
     scrollback_infinite = True
 [layouts]

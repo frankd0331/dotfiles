@@ -9,6 +9,7 @@
 		      clojure-test-mode
 		      evil
 		      zenburn-theme
+                      livescript-mode
 		      ));;cider
 
 (dolist (p my-packages)
@@ -99,7 +100,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; some new functionality stolen from stanford startup class and the respective original authors
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/packages/")
 (require 'linum)
 (require 'smooth-scrolling)
 (require 'whitespace)
@@ -124,6 +125,14 @@
 (require 'jade-mode)    
 (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
+(setq-default indent-tabs-mode nil)
+(setq js-indent-level 2)
+;; jshint
+(require 'flymake-node-jshint)
+(add-hook 'js-mode-hook (lambda () (flymake-mode 1)))
+;;(autoload #'espresso-mode "espresso" "Start espresso-mode" t)
+;;(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
+;;(add-to-list 'auto-mode-alist '("\\.json$" . espresso-mode))
 
 ;; multiple cursors
 (unless (package-installed-p 'multiple-cursors)

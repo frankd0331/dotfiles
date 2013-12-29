@@ -3,12 +3,15 @@ import XMonad.Actions.Volume
 import Data.Map    (fromList)
 import Data.Monoid (mappend)
 import XMonad.Layout.ThreeColumns
+import XMonad.Layout.Spacing
+import XMonad.Layout.Gaps
+import XMonad.Layout.Fullscreen
 
 --this creates a three column tile
-myLayout = ThreeColMid 1 (1/100) (2/5) ||| ThreeCol 1 (3/100) (1/2) 
+myLayout = gaps [(U,18)] $ spacing 5 $ ThreeColMid 1 (3/100) (2/5) ||| ThreeCol 1 (3/100) (-7/24) ||| tiled ||| Mirror tiled ||| fullscreenFull Full 
+  where tiled = Tall 1 (3/100) (1/2)
 
 main = do
---  layoutHook = myLayout
   xmonad defaultConfig { keys =
        keys defaultConfig `mappend`
        \c -> fromList [
@@ -17,6 +20,3 @@ main = do
        ],
                          layoutHook = myLayout
   }
-
--- guess I need to learn more about using main before trying this             
---       layoutHook = myLayout
