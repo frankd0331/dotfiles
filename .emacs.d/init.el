@@ -1,16 +1,16 @@
 ;; this includes the melpa package repo
 (require 'package)
 (add-to-list 'package-archives 
-    '("melpa" . "http://melpa.milkbox.net/packages/") t)
+	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
+
 
 ;; packages
 (defvar my-packages '(clojure-mode
 		      clojure-test-mode
 		      evil
 		      zenburn-theme
-                      livescript-mode
-		      ));;cider
+		      ))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
