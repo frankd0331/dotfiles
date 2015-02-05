@@ -6,8 +6,8 @@
 
 
 ;; packages
-(defvar my-packages '(clojure-mode
-		      clojure-test-mode
+(defvar my-packages '(;;clojure-mode
+		      ;;clojure-test-mode
 		      evil
 		      zenburn-theme
 		      ))
