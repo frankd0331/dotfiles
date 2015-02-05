@@ -190,4 +190,5 @@
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
 ;; C
-(setq-default c-basic-offset 4)
+(setq-default c-default-style "linux"
+              c-basic-offset 4)
