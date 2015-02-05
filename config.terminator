@@ -17,12 +17,13 @@
     scrollbar_position = hidden
     palette = "#3f3f3f:#cc9393:#7f9f7f:#e3ceab:#dfaf8f:#cc9393:#8cd0d3:#dcdccc:#3f3f3f:#cc9393:#7f9f7f:#e3ceab:#dfaf8f:#cc9393:#8cd0d3:#dcdccc"
     visible_bell = True
+    background_image = None
     background_darkness = 0.93
     background_type = transparent
     use_system_font = False
     foreground_color = "#dcdccc"
     cursor_shape = ibeam
-    font = Ubuntu Mono 16
+    font = Droid Sans Mono 13
     background_color = "#3f3f3f"
     scrollback_infinite = True
 [layouts]
